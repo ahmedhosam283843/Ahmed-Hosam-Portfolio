@@ -1,10 +1,10 @@
 {
   "root": true,
   "project": {
-    "name": "hosam_porfolio"
+    "name": "AhmedHosamPortfolio"
   },
   "api": {
-    "projectId": "v6ctc2fr",
+    "projectId": "qk8j8gcf",
     "dataset": "production"
   },
   "plugins": [
