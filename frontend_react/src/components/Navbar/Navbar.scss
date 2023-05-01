@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
 .app__navbar {
   width: 100%;
 
@@ -15,22 +16,35 @@
   z-index: 2;
 }
 
-.app__navbar-logo {
-  display: flex;
+.app-navbar-name {
   justify-content: flex-start;
-  align-items: center;
+  align-items: baseline;
+  display: flex;
+  vertical-align: top;
+  p {
+    height: 15px;
+    font-weight: bold;
+    font-size: 1.7rem;
+    line-height: 15px;
+    color: #020202;
+    text-transform: capitalize;
+    font-family: "Bungee Shade", cursive;
+    margin-bottom: 0;
+    margin-top: 0;
+    span {
+      color: rgb(44, 121, 179);
+    }
 
-  img {
-    width: 90px;
-    height: 20px;
+    @media screen and (max-width: 450px) {
+      font-size: 1.4rem;
+    }
 
     @media screen and (min-width: 2000px) {
-      width: 180px;
-      height: 40px;
+      font-size: 2rem;
+      height: 30px;
     }
   }
 }
-
 .app__navbar-links {
   flex: 1;
   display: flex;
