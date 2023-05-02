@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { client } from "../../client";
+import emailjs from '@emailjs/browser';
 import "./Footer.scss";
 
 const Footer = () => {
@@ -14,7 +15,7 @@ const Footer = () => {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const { username, email, message } = formData;
+  const { name, email, message } = formData;
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -26,13 +27,24 @@ const Footer = () => {
 
     const contact = {
       _type: "contact",
-      name: formData.username,
-      email: formData.email,
-      message: formData.message,
+      name,
+      email,
+      message,
     };
 
-    client
-      .create(contact)
+    const templateParams = {
+      user_name: contact.name,
+      user_email: contact.email,
+      message: contact.message,
+    };
+
+    emailjs
+      .send(
+        "service_t6vy2l4",
+        "template_m23zxei",
+        templateParams,
+        "K8mNLp1hvIi1Q5Ry4"
+      )
       .then(() => {
         setLoading(false);
         setIsFormSubmitted(true);
@@ -42,7 +54,10 @@ const Footer = () => {
 
   return (
     <>
-      <h2 className="head-text">Love to hear from you,<br/> Get in touch <span>👋</span></h2>
+      <h2 className="head-text">
+        Love to hear from you,
+        <br /> Get in touch <span>👋</span>
+      </h2>
 
       <div className="app__footer-cards">
         <div className="app__footer-card ">
@@ -65,8 +80,8 @@ const Footer = () => {
               className="p-text"
               type="text"
               placeholder="Your Name"
-              name="username"
-              value={username}
+              name="name"
+              value={name}
               onChange={handleChangeInput}
             />
           </div>
